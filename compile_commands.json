@@ -1,0 +1,9 @@
+[{
+  "file": "C:\\Users\\Oskar\\Desktop\\MOP\\MOP\\autopong\\startup.c",
+  "directory": "C:\\Users\\Oskar\\Desktop\\MOP\\MOP\\autopong",
+  "command": "clang  -c C:\\Users\\Oskar\\Desktop\\MOP\\MOP\\autopong\\startup.c -o C:\\Users\\Oskar\\Desktop\\MOP\\MOP\\autopong\\startup.c.o -target x86_64-pc-windows-gnu -I. -I.  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99"
+ }, {
+  "file": "C:\\Users\\Oskar\\Desktop\\MOP\\MOP\\graphicdisplay\\startup.c",
+  "directory": "C:\\Users\\Oskar\\Desktop\\MOP\\MOP\\graphicdisplay",
+  "command": "clang  -c C:\\Users\\Oskar\\Desktop\\MOP\\MOP\\graphicdisplay\\startup.c -o C:\\Users\\Oskar\\Desktop\\MOP\\MOP\\graphicdisplay\\startup.c.o -target x86_64-pc-windows-gnu -I. -I.  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99"
+ }]

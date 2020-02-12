@@ -1,0 +1,3 @@
+-IC:\Users\Oskar\Desktop\MOP\MOP\graphicdisplay
+-target
+x86_64-pc-windows-gnu
