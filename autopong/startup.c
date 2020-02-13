@@ -310,14 +310,29 @@ void delay_milli(unsigned int ms){
  }
  void draw_object(POBJECT o){
 	 for(int i = 0; i < o->geo->numpoints; i++){
-		 pixel(o->posx + o->geo->px[i].x, o->posy, 1)
+		 pixel(o->posx + o->geo->px[i].x, o->posy + 0->geo->px[i].y, 1)
 	 }
  }
  void clear_object(POBJECT o){
-	 
+	 for(int i = 0; i< o->geo->numpoints; i++){
+		 pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y, 0);
+	 }
  }
  void move_object(POBJECT o){
-	 
+	 clear_object(o);
+	 if(o->posx < 1){
+		 o->dirx*-1;
+	 }
+	 if(o->posx > 128){
+		 o->dirx*-1;
+	 }
+	 if(o->posy < 1){
+		 o->diry*-1;
+	 }
+	 if(o->posy > 64){
+		 o->posy *= -1
+	 }
+	 draw_object(o);
  }
  
  static OBJECT ball =
@@ -333,17 +348,16 @@ void delay_milli(unsigned int ms){
  
 void main(void)
 {
-	unsigned i;
-	init_app();
-	graphic_initalize();
-#ifndef SIMULATOR
-	graphic_clear_screen();
-#endif
-	
-	
-	
-	/*graphic_write_command(LCD_SET_ADD|10, B_CS1|B_CS2);
-	graphic_write_command(LCD_SET_ADD|1,  B_CS1|B_CS2);
-	graphic_write_data(0xFF, B_CS1|B_CS2); */
+	 POBJECT p = &ball;
+	 init_app();
+	 graphic_initalize();
+ #ifndef SIMULATOR
+	 graphic_clear_screen();
+ #endif
+	 p->set_speed(p, 4, 1);
+	 while(1){
+		 p->move(p);
+		 delay_milli(40); /*25 "bilder/sekund" */
+	 }
 }
 

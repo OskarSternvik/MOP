@@ -5,8 +5,15 @@
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="C:\Users\Oskar\Desktop\MOP\MOP\graphicdisplay\startup.c" Name="FileName"/>
-      <int Value="261" Name="FirstVisibleLine"/>
-      <int Value="291" Name="CurrentLine"/>
+      <int Value="264" Name="FirstVisibleLine"/>
+      <int Value="271" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\Oskar\Desktop\MOP\MOP\autopong\startup.c" Name="FileName"/>
+      <int Value="333" Name="FirstVisibleLine"/>
+      <int Value="312" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
