@@ -26,8 +26,8 @@ void delay_250ns(void){
 	#endif
 		/* SystemCoreClock = 16800000 */
 		*STK_CTRL = 0;
-		*STK_LOAD = ((168/4-1))
-		*STK_VAL
+		*STK_LOAD = ((168/4-1));
+		*STK_VAL;
 }
 void delay_500ns(void){
 	delay_250ns();
@@ -86,7 +86,7 @@ void delay_milli(unsigned int ms){
 	 c = *GPIO_E_ODR_LOW;
 	 c &= ~B_SELECT;
 	 c &= ~x;
-	 *GPIO_E_ODR_LOW = c
+	 *GPIO_E_ODR_LOW = c;
  }
  
  void select_controller(uint8_t controller){
@@ -139,7 +139,7 @@ void delay_milli(unsigned int ms){
 	 delay_500ns();
 	 graphic_ctrl_bit_set(B_E);
 	 delay_500ns();
-	 c = *GPIO_E_IDR_HIGH
+	 c = *GPIO_E_IDR_HIGH;
 	 graphic_ctrl_bit_clear(B_E);
 	 *GPIO_E_MODER = 0x55555555;
 	 if(controller & B_CS1){
@@ -203,7 +203,7 @@ void delay_milli(unsigned int ms){
  #define LCD_BUSY       0x80
  
  void init_app(){
-	 *((GPIO_E_MODER) = 0x55555555);
+	 *(GPIO_E_MODER) = 0x55555555;
  }
  
  void graphic_initalize(void){
@@ -211,7 +211,7 @@ void delay_milli(unsigned int ms){
 	delay_mikro(10);
 	graphic_ctrl_bit_clear(B_CS1);
 	graphic_ctrl_bit_clear(B_CS2);
-	graphic_ctrl_bit_clear(B_RST)
+	graphic_ctrl_bit_clear(B_RST);
 	graphic_ctrl_bit_clear(B_E);
 	delay_milli(30);
 	graphic_ctrl_bit_set(B_RST);
@@ -237,14 +237,14 @@ void delay_milli(unsigned int ms){
 	 uint8_t mask, temp, controller;
 	 int index = ((y-1)/8);
 	 switch((y-1)%8){
-		0:mask = 1;break;
-		1:mask = 2;break;
-		2:mask = 4;break;
-		3:mask = 8;break;
-		4:mask = 0x10;break;
-		5:mask = 0x20;break;
-		6:mask = 0x40;break;
-		7:mask = 0x80;break;
+		case 0:mask = 1;break;
+		case 1:mask = 2;break;
+		case 2:mask = 4;break;
+		case 3:mask = 8;break;
+		case 4:mask = 0x10;break;
+		case 5:mask = 0x20;break;
+		case 6:mask = 0x40;break;
+		case 7:mask = 0x80;break;
 	 }
 	 if(set == 0){
 		 mask = ~mask;
@@ -306,11 +306,11 @@ void delay_milli(unsigned int ms){
  
  void set_object_speed(POBJECT o, int speedx, int speedy){
 	 o->dirx = speedx;
-	 o->posy = speedy;
+	 o->diry = speedy;
  }
  void draw_object(POBJECT o){
 	 for(int i = 0; i < o->geo->numpoints; i++){
-		 pixel(o->posx + o->geo->px[i].x, o->posy + 0->geo->px[i].y, 1)
+		 pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y, 1);
 	 }
  }
  void clear_object(POBJECT o){
@@ -320,17 +320,19 @@ void delay_milli(unsigned int ms){
  }
  void move_object(POBJECT o){
 	 clear_object(o);
+	 o->posx += o->dirx;
+	 o->posy += o->diry;
 	 if(o->posx < 1){
-		 o->dirx*-1;
+		 o->dirx *= -1;
 	 }
 	 if(o->posx > 128){
-		 o->dirx*-1;
+		 o->dirx *= -1;
 	 }
 	 if(o->posy < 1){
-		 o->diry*-1;
+		 o->diry *= -1;
 	 }
 	 if(o->posy > 64){
-		 o->posy *= -1
+		 o->posy *= -1;
 	 }
 	 draw_object(o);
  }

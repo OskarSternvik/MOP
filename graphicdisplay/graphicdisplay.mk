@@ -15,7 +15,7 @@ CurrentFileFullPath    :=
 User                   :=Oskar
 Date                   :=13/02/2020
 CodeLitePath           :=C:/cseapp/CodeLite
-LinkerName             :=C:/msys64/mingw64/bin/g++.exe
+LinkerName             :=C:/cseapp/CodeLite/tools/gcc-arm/bin/arm-none-eabi-ld.exe
 SharedObjectLinkerName :=C:/msys64/mingw64/bin/g++.exe -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
@@ -51,7 +51,7 @@ LibPath                := $(LibraryPathSwitch).
 ##
 AR       := C:/msys64/mingw64/bin/ar.exe rcu
 CXX      := C:/msys64/mingw64/bin/g++.exe
-CC       := C:/msys64/mingw64/bin/gcc.exe
+CC       := C:/cseapp/CodeLite/tools/gcc-arm/bin/arm-none-eabi-gcc.exe
 CXXFLAGS :=  -g -O0 -W $(Preprocessors)
 CFLAGS   :=  -g -O0 -w -mthumb -march=armv6-m  -mfloat-abi=soft -std=c99 $(Preprocessors)
 ASFLAGS  := 

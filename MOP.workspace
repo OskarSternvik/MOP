@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="MOP" Database="" Version="10.0.0">
-  <Project Name="graphicdisplay" Path="graphicdisplay/graphicdisplay.project" Active="Yes"/>
-  <Project Name="autopong" Path="autopong/autopong.project" Active="No"/>
+  <Project Name="graphicdisplay" Path="graphicdisplay/graphicdisplay.project" Active="No"/>
+  <Project Name="autopong" Path="autopong/autopong.project" Active="Yes"/>
+  <Project Name="systick_irq" Path="systick_irq/systick_irq.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
       <Project Name="graphicdisplay" ConfigName="Debug"/>
       <Project Name="autopong" ConfigName="Debug"/>
+      <Project Name="systick_irq" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
       <Project Name="graphicdisplay" ConfigName="Release"/>
       <Project Name="autopong" ConfigName="Release"/>
+      <Project Name="systick_irq" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
