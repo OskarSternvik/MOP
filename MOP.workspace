@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="MOP" Database="" Version="10.0.0">
   <Project Name="graphicdisplay" Path="graphicdisplay/graphicdisplay.project" Active="No"/>
-  <Project Name="autopong" Path="autopong/autopong.project" Active="Yes"/>
+  <Project Name="autopong" Path="autopong/autopong.project" Active="No"/>
+  <Project Name="getSetPsr" Path="getSetPsr/getSetPsr.project" Active="No"/>
   <Project Name="systick_irq" Path="systick_irq/systick_irq.project" Active="No"/>
+  <Project Name="flipflop_irq" Path="flipflop_irq/flipflop_irq.project" Active="No"/>
+  <Project Name="flipflop_irq_ack" Path="flipflop_irq_ack/flipflop_irq_ack.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
       <Project Name="graphicdisplay" ConfigName="Debug"/>
       <Project Name="autopong" ConfigName="Debug"/>
+      <Project Name="getSetPsr" ConfigName="Debug"/>
       <Project Name="systick_irq" ConfigName="Debug"/>
+      <Project Name="flipflop_irq" ConfigName="Debug"/>
+      <Project Name="flipflop_irq_ack" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
       <Project Name="graphicdisplay" ConfigName="Release"/>
       <Project Name="autopong" ConfigName="Release"/>
+      <Project Name="getSetPsr" ConfigName="Release"/>
       <Project Name="systick_irq" ConfigName="Release"/>
+      <Project Name="flipflop_irq" ConfigName="Release"/>
+      <Project Name="flipflop_irq_ack" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

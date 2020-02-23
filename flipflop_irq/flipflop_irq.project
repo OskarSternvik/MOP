@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Project Name="autopong" Version="10.0.0" InternalType="User templates">
+<CodeLite_Project Name="flipflop_irq" Version="10.0.0" InternalType="User templates">
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00010001N0005Debug000000000000]]>
@@ -139,6 +139,4 @@ monitor restart</PostConnectCommands>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>
   </VirtualDirectory>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
 </CodeLite_Project>

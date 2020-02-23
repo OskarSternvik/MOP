@@ -139,4 +139,6 @@ monitor restart</PostConnectCommands>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>
   </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>

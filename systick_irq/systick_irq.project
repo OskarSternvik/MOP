@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Project Name="systick_irq" Version="10.0.0" InternalType="Console">
+<CodeLite_Project Name="systick_irq" Version="10.0.0" InternalType="User templates">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00010001N0005Debug000000000000]]>
+    </Plugin>
+    <Plugin Name="CMakePlugin">
+      <![CDATA[[{
+  "name": "Debug",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }]]]>
+    </Plugin>
+  </Plugins>
   <Description/>
   <Dependencies/>
   <Settings Type="Executable">
@@ -13,23 +30,35 @@
       <ResourceCompiler Options=""/>
     </GlobalSettings>
     <Configuration Name="Debug" CompilerType="MinGW 64bit ( MSYS2 64bit )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
-      <Compiler Options="-g;-O0;-Wall" C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+      <Compiler Options="-g;-O0;-W" C_Options="-g;-O0;-w;-mthumb -march=armv6-m  -mfloat-abi=soft;-std=c99" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
       </Compiler>
-      <Linker Options="" Required="yes"/>
+      <Linker Options="-T$(ProjectPath)/md407-ram.x;-L$(ARM_V6LIB) -L$(ARM_GCC_V6LIB);-nostartfiles" Required="yes">
+        <Library Value="gcc"/>
+        <Library Value="c_nano"/>
+      </Linker>
       <ResourceCompiler Options="" Required="no"/>
-      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName).elf" IntermediateDirectory="./Debug" Command="$(ProjectPath)/$(IntermediateDirectory)/$(ProjectName).elf" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
       <BuildSystem Name="Default"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
-        <![CDATA[]]>
+        <![CDATA[ARM_V6LIB=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v6-m/nofp
+ARM_GCC_V6LIB=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp
+ARM_M4SFPLIB=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v7e-m+fp/softfp
+ARM_GCC_M4SFPLIB=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/softfp
+ARM_M4HFPLIB=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v7e-m+fp/hard
+ARM_GCC_M4HFPLIB=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard]]>
       </Environment>
-      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+      <Debugger IsRemote="yes" RemoteHostName="localhost" RemoteHostPort="1234" DebuggerPath="" IsExtended="no">
         <DebuggerSearchPaths/>
-        <PostConnectCommands/>
+        <PostConnectCommands>load
+monitor restart</PostConnectCommands>
         <StartupCommands/>
       </Debugger>
       <PreBuild/>
-      <PostBuild/>
+      <PostBuild>
+        <Command Enabled="yes">$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-objcopy -S -O srec  $(IntermediateDirectory)/$(ProjectName).elf $(IntermediateDirectory)/$(ProjectName).s19</Command>
+        <Command Enabled="yes">$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-objdump -D -S $(IntermediateDirectory)/$(ProjectName).elf &gt; $(IntermediateDirectory)/$(ProjectName).dass</Command>
+      </PostBuild>
       <CustomBuild Enabled="no">
         <RebuildCommand/>
         <CleanCommand/>
@@ -52,24 +81,36 @@
       </Completion>
     </Configuration>
     <Configuration Name="Release" CompilerType="MinGW 64bit ( MSYS2 64bit )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
-      <Compiler Options="-O2;-Wall" C_Options="-O2;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+      <Compiler Options="-O2;-W" C_Options="-g;-O2;-w;-mthumb -march=armv6-m  -mfloat-abi=soft;-std=c99" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
         <Preprocessor Value="NDEBUG"/>
       </Compiler>
-      <Linker Options="" Required="yes"/>
+      <Linker Options="-T$(ProjectPath)/md407-ram.x;-L$(ARM_V6LIB) -L$(ARM_GCC_V6LIB);-nostartfiles" Required="yes">
+        <Library Value="gcc"/>
+        <Library Value="c_nano"/>
+      </Linker>
       <ResourceCompiler Options="" Required="no"/>
-      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName).elf" IntermediateDirectory="./Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
       <BuildSystem Name="Default"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
-        <![CDATA[]]>
+        <![CDATA[ARM_V6LIB=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v6-m/nofp
+ARM_GCC_V6LIB=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp
+ARM_M4SFPLIB=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v7e-m+fp/softfp
+ARM_GCC_M4SFPLIB=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/softfp
+ARM_M4HFPLIB=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v7e-m+fp/hard
+ARM_GCC_M4HFPLIB=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard]]>
       </Environment>
-      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+      <Debugger IsRemote="yes" RemoteHostName="localhost" RemoteHostPort="1234" DebuggerPath="" IsExtended="no">
         <DebuggerSearchPaths/>
-        <PostConnectCommands/>
+        <PostConnectCommands>load
+monitor restart</PostConnectCommands>
         <StartupCommands/>
       </Debugger>
       <PreBuild/>
-      <PostBuild/>
+      <PostBuild>
+        <Command Enabled="yes">$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-objcopy -S -O srec  $(IntermediateDirectory)/$(ProjectName).elf $(IntermediateDirectory)/$(ProjectName).s19</Command>
+        <Command Enabled="yes">$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-objdump -D -S $(IntermediateDirectory)/$(ProjectName).elf &gt; $(IntermediateDirectory)/$(ProjectName).dass</Command>
+      </PostBuild>
       <CustomBuild Enabled="no">
         <RebuildCommand/>
         <CleanCommand/>
@@ -93,6 +134,11 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
-    <File Name="main.c"/>
+    <File Name="startup.c"/>
   </VirtualDirectory>
+  <VirtualDirectory Name="resources">
+    <File Name="md407-ram.x"/>
+  </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>

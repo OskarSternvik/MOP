@@ -3,17 +3,17 @@
 ## any manual changes will be erased      
 ##
 ## Debug
-ProjectName            :=systick_irq
+ProjectName            :=getSetPsr
 ConfigurationName      :=Debug
 WorkspacePath          :=C:/Users/Oskar/Desktop/MOP/MOP
-ProjectPath            :=C:/Users/Oskar/Desktop/MOP/MOP/systick_irq
+ProjectPath            :=C:/Users/Oskar/Desktop/MOP/MOP/getSetPsr
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Oskar
-Date                   :=23/02/2020
+Date                   :=21/02/2020
 CodeLitePath           :=C:/cseapp/CodeLite
 LinkerName             :=C:/cseapp/CodeLite/tools/gcc-arm/bin/arm-none-eabi-gcc.exe
 SharedObjectLinkerName :=C:/msys64/mingw64/bin/g++.exe -shared -fPIC
@@ -32,7 +32,7 @@ Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
-ObjectsFileList        :="systick_irq.txt"
+ObjectsFileList        :="getSetPsr.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=makedir
 RcCmpOptions           := 
@@ -88,8 +88,8 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 
 PostBuild:
 	@echo Executing Post Build commands ...
-	C:\cseapp\CodeLite/tools/gcc-arm/bin/arm-none-eabi-objcopy -S -O srec  ./Debug/systick_irq.elf ./Debug/systick_irq.s19
-	C:\cseapp\CodeLite/tools/gcc-arm/bin/arm-none-eabi-objdump -D -S ./Debug/systick_irq.elf > ./Debug/systick_irq.dass
+	C:\cseapp\CodeLite/tools/gcc-arm/bin/arm-none-eabi-objcopy -S -O srec  ./Debug/getSetPsr.elf ./Debug/getSetPsr.s19
+	C:\cseapp\CodeLite/tools/gcc-arm/bin/arm-none-eabi-objdump -D -S ./Debug/getSetPsr.elf > ./Debug/getSetPsr.dass
 	@echo Done
 
 MakeIntermediateDirs:
@@ -106,7 +106,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/startup.c$(ObjectSuffix): startup.c $(IntermediateDirectory)/startup.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/Oskar/Desktop/MOP/MOP/systick_irq/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "C:/Users/Oskar/Desktop/MOP/MOP/getSetPsr/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/startup.c$(DependSuffix): startup.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/startup.c$(ObjectSuffix) -MF$(IntermediateDirectory)/startup.c$(DependSuffix) -MM startup.c
 
