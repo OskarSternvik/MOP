@@ -6,6 +6,7 @@
   <Project Name="systick_irq" Path="systick_irq/systick_irq.project" Active="No"/>
   <Project Name="flipflop_irq" Path="flipflop_irq/flipflop_irq.project" Active="No"/>
   <Project Name="flipflop_irq_ack" Path="flipflop_irq_ack/flipflop_irq_ack.project" Active="Yes"/>
+  <Project Name="flipflop_irq_vectored" Path="flipflop_irq_vectored/flipflop_irq_vectored.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -15,6 +16,7 @@
       <Project Name="systick_irq" ConfigName="Debug"/>
       <Project Name="flipflop_irq" ConfigName="Debug"/>
       <Project Name="flipflop_irq_ack" ConfigName="Debug"/>
+      <Project Name="flipflop_irq_vectored" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -24,6 +26,7 @@
       <Project Name="systick_irq" ConfigName="Release"/>
       <Project Name="flipflop_irq" ConfigName="Release"/>
       <Project Name="flipflop_irq_ack" ConfigName="Release"/>
+      <Project Name="flipflop_irq_vectored" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
