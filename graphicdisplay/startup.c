@@ -24,7 +24,7 @@ void delay_250ns(void){
 	#endif
 		/* SystemCoreClock = 16800000 */
 		*STK_CTRL = 0;
-		*STK_LOAD = ((168/4-1));
+		*STK_LOAD = ((168/4)-1);
 		*STK_VAL;
 		*STK_CTRL = 5;
 		while((*STK_CTRL & 10000) == 0){}
